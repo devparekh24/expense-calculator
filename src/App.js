@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import ExpenseItem from './components/ExpenseItem/ExpenseItem'
 
 function App() {
+  const data = [
+    {
+      date: new Date(2020, 10, 5),
+      title: 'BIKE EMI',
+      amount: 522.45
+    },
+    {
+      date: new Date(2020, 5, 8),
+      title: 'TV',
+      amount: 724.88
+    },
+    {
+      date: new Date(2020, 12, 10),
+      title: 'PHONE',
+      amount: 522.45
+    },
+    {
+      date: new Date(2020, 12, 24),
+      title: 'B-DAY PARTY',
+      amount: 300
+    }
+  ]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    data.map(eachItem => {
+      return <ExpenseItem date={eachItem.date.toISOString()} title={eachItem.title} amount={eachItem.amount} />
+    })
   );
 }
 
