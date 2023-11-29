@@ -1,4 +1,5 @@
-import ExpenseItem from './components/ExpenseItem/ExpenseItem'
+import React from 'react';
+import Expense from './components/Expense/Expense';
 
 function App() {
   const data = [
@@ -24,9 +25,7 @@ function App() {
     }
   ]
   return (
-    data.map(eachItem => {
-      return <ExpenseItem date={eachItem.date.toISOString()} title={eachItem.title} amount={eachItem.amount} />
-    })
+    <Expense data={data} />
   );
 }
 
