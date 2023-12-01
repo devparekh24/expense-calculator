@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import './ExpenseForm.css'
 
-export default function ExpenseForm() {
-    const [inputs, setInputs] = useState({
+export default function ExpenseForm({ onSaveExpenseDataForm }) {
+
+    const inputData = {
         title: '',
         amount: '',
         date: ''
-    })
+    }
+
+    const [inputs, setInputs] = useState(inputData)
 
     const onTitleChangeHandler = (e) => {
         setInputs((prevState) => {
@@ -25,22 +28,28 @@ export default function ExpenseForm() {
             return { ...prevState, amount: e.target.value }
         })
     }
-    console.log(inputs)
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        // console.log(inputs)
+        setInputs(inputData)
+        onSaveExpenseDataForm(inputs);
+    }
 
     return (
-        <form >
+        <form onSubmit={onSubmitHandler}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label>Title</label>
-                    <input type="text" onChange={onTitleChangeHandler} />
+                    <input type="text" value={inputs.title} onChange={onTitleChangeHandler} />
                 </div>
                 <div className='new-expense__control'>
                     <label>Date</label>
-                    <input type="date" onChange={onDateChangeHandler} />
+                    <input type="date" value={inputs.date} onChange={onDateChangeHandler} />
                 </div>
                 <div className='new-expense__control'>
                     <label>Amount</label>
-                    <input type="number" min={0.01} step={0.01} onChange={onAmountChangeHandler} />
+                    <input type="number" min={0.01} step={0.01} value={inputs.amount} onChange={onAmountChangeHandler} />
                 </div>
                 <div className="new-expense__actions">
                     <button type='submit'>Add Expense</button>
