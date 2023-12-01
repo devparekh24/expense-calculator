@@ -2,23 +2,34 @@ import React, { useState } from 'react'
 import './ExpenseForm.css'
 
 export default function ExpenseForm() {
-    const [title, setTitle] = useState('')
-    const [amount, setAmount] = useState('')
-    const [date, setDate] = useState('')
+    const [inputs, setInputs] = useState({
+        title: '',
+        amount: '',
+        date: ''
+    })
 
     const onTitleChangeHandler = (e) => {
-        setTitle(e.target.value)
+        setInputs({
+            ...inputs,
+            title: e.target.value
+        })
     }
 
     const onDateChangeHandler = (e) => {
-        setDate(e.target.value)
+        setInputs({
+            ...inputs,
+            date: e.target.value
+        })
     }
 
     const onAmountChangeHandler = (e) => {
-        setAmount(e.target.value)
+        setInputs({
+            ...inputs,
+            amount: e.target.value
+        })
     }
-    console.log(title, amount, date)
-    
+    console.log(inputs)
+
     return (
         <form >
             <div className='new-expense__controls'>
