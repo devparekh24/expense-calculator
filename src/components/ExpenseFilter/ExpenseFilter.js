@@ -1,5 +1,6 @@
 import React from 'react'
 import './ExpenseFilter.css'
+import { BsFilter } from 'react-icons/bs'
 
 export default function ExpenseFilter({ selected, onChangeFilter }) {
     const currentYear = new Date().getFullYear();
@@ -10,6 +11,10 @@ export default function ExpenseFilter({ selected, onChangeFilter }) {
 
     const handleYearChange = (e) => {
         onChangeFilter(e.target.value)
+    }
+
+    const handleClearFilter = () => {
+        onChangeFilter(currentYear)
     }
 
     return (
@@ -23,6 +28,10 @@ export default function ExpenseFilter({ selected, onChangeFilter }) {
                         })
                     }
                 </select>
+                <div className="expenses-clear-filter__control" onClick={handleClearFilter}>
+                    <BsFilter size={30} />
+                    <label> Clear Filter </label>
+                </div>
             </div>
         </div>
     )
