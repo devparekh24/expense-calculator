@@ -9,23 +9,20 @@ export default function ExpenseForm() {
     })
 
     const onTitleChangeHandler = (e) => {
-        setInputs({
-            ...inputs,
-            title: e.target.value
+        setInputs((prevState) => {
+            return { ...prevState, title: e.target.value }
         })
     }
 
     const onDateChangeHandler = (e) => {
-        setInputs({
-            ...inputs,
-            date: e.target.value
+        setInputs((prevState) => {
+            return { ...prevState, date: e.target.value }
         })
     }
 
     const onAmountChangeHandler = (e) => {
-        setInputs({
-            ...inputs,
-            amount: e.target.value
+        setInputs((prevState) => {
+            return { ...prevState, amount: e.target.value }
         })
     }
     console.log(inputs)
