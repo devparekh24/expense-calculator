@@ -24,7 +24,7 @@ export default function Expense({ data }) {
         });
     }
 
-    let expenseContentList = <p>No Expenses Found!</p>
+    let expenseContentList = <h4 style={{ 'color': '#e2e2e2' }}>No Expenses Found!</h4>
 
     if (filteredExpensesByYear.length > 0) {
         expenseContentList = filteredExpensesByYear.map(eachItem => {
