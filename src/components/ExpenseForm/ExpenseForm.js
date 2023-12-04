@@ -31,7 +31,7 @@ export default function ExpenseForm({ onSaveExpenseDataForm }) {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        // console.log(inputs)
+        console.log(inputs)
         setInputs(inputData)
         onSaveExpenseDataForm(inputs);
     }
@@ -49,7 +49,7 @@ export default function ExpenseForm({ onSaveExpenseDataForm }) {
                 </div>
                 <div className='new-expense__control'>
                     <label>Amount</label>
-                    <input type="number" min={0.01} step={0.01} value={inputs.amount} onChange={onAmountChangeHandler} />
+                    <input type="number" min={1} step={1} value={inputs.amount} onChange={onAmountChangeHandler} />
                 </div>
                 <div className="new-expense__actions">
                     <button type='submit'>Add Expense</button>

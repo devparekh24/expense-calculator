@@ -13,8 +13,8 @@ export default function ExpenseFilter({ selected, onChangeFilter }) {
         onChangeFilter(e.target.value)
     }
 
-    const handleClearFilter = () => {
-        onChangeFilter(currentYear)
+    const handleClearFilter = (e) => {
+        onChangeFilter(e.target.value === selected)
     }
 
     return (
@@ -22,6 +22,7 @@ export default function ExpenseFilter({ selected, onChangeFilter }) {
             <div className='expenses-filter__control'>
                 <label>Filter by year</label>
                 <select value={selected} onChange={handleYearChange}>
+                    <option defaultValue={'select-year'} selected>{'select year'}</option>
                     {
                         years.map((year) => {
                             return <option key={year} value={year}>{year}</option>
