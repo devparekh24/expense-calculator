@@ -3,6 +3,7 @@ import Expense from './components/Expense/Expense';
 import NewExpense from './components/ExpenseForm/NewExpense'
 import data from './data.json'
 import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 
 function App() {
   console.log(data)
@@ -13,7 +14,7 @@ function App() {
   }
   return (
     <div>
-      <nav class="navbar navbar-dark bg-dark" />
+      <Header />
       <NewExpense onAddExpenseData={AddExpenseDataHandler} />
       <Expense data={expenses} />
       <Footer />
