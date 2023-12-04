@@ -16,7 +16,7 @@ export default function Expense({ data }) {
             <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
             {
                 data.map(eachItem => {
-                    return <ExpenseItem date={eachItem.date.toISOString()} title={eachItem.title} amount={eachItem.amount} />
+                    return <ExpenseItem key={eachItem.id} date={eachItem.date} title={eachItem.title} amount={eachItem.amount} />
                 })
             }
         </div>

@@ -6,7 +6,11 @@ export default function NewExpense({ onAddExpenseData }) {
 
     const onSaveExpenseDataFormHandler = (savedExpenseFormData) => {
         // console.log(savedExpenseFormData)
-        onAddExpenseData(savedExpenseFormData)
+        const finalExpenseData = {
+            ...savedExpenseFormData,
+            id: Math.random().toString()
+        }
+        onAddExpenseData(finalExpenseData)
     }
     return (
         <div className='new-expense'>
