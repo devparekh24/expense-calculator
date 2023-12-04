@@ -11,14 +11,17 @@ export default function Expense({ data }) {
         setFilteredYear(selectedYear)
     }
     console.log(filteredYear)
+
+    const filteredExpensesByYear = data.filter((expense) => {
+        return expense.date.getFullYear().toString() === filteredYear;
+    })
+
     return (
         <div className='expenses'>
             <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-            {
-                data.map(eachItem => {
-                    return <ExpenseItem key={eachItem.id} date={eachItem.date} title={eachItem.title} amount={eachItem.amount} />
-                })
-            }
+            {filteredExpensesByYear.length === 0 ? <p>No Expenses Found!</p> : filteredExpensesByYear.map(eachItem => {
+                return <ExpenseItem key={eachItem.id} date={eachItem.date} title={eachItem.title} amount={eachItem.amount} />
+            })}
         </div>
     );
 }
