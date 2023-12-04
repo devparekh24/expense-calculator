@@ -19,7 +19,8 @@ export default function Expense({ data }) {
     return (
         <div className='expenses'>
             <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-            {filteredExpensesByYear.length === 0 ? <p>No Expenses Found!</p> : filteredExpensesByYear.map(eachItem => {
+            {filteredExpensesByYear.length === 0 && <p>No Expenses Found!</p>}
+            {filteredExpensesByYear.length > 0 && filteredExpensesByYear.map(eachItem => {
                 return <ExpenseItem key={eachItem.id} date={eachItem.date} title={eachItem.title} amount={eachItem.amount} />
             })}
         </div>
