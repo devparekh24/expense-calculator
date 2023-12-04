@@ -8,7 +8,6 @@ function App() {
   const [expenses, setExpenses] = useState(data)
 
   const AddExpenseDataHandler = (expenseData) => {
-    data.push(expenseData)
     setExpenses((prevExpenses) => [expenseData, ...prevExpenses])
   }
   return (
