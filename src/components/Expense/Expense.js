@@ -16,13 +16,17 @@ export default function Expense({ data }) {
         return expense.date.getFullYear().toString() === filteredYear;
     })
 
+    let expenseContentList = <p>No Expenses Found!</p>
+
+    if (filteredExpensesByYear.length > 0) {
+        expenseContentList = filteredExpensesByYear.length > 0 && filteredExpensesByYear.map(eachItem => {
+            return <ExpenseItem key={eachItem.id} date={eachItem.date} title={eachItem.title} amount={eachItem.amount} />
+        })
+    }
     return (
         <div className='expenses'>
             <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-            {filteredExpensesByYear.length === 0 && <p>No Expenses Found!</p>}
-            {filteredExpensesByYear.length > 0 && filteredExpensesByYear.map(eachItem => {
-                return <ExpenseItem key={eachItem.id} date={eachItem.date} title={eachItem.title} amount={eachItem.amount} />
-            })}
+            {expenseContentList}
         </div>
     );
 }
